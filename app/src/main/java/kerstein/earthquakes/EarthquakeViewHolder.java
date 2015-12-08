@@ -18,9 +18,15 @@ public class EarthquakeViewHolder extends RecyclerView.ViewHolder {
         String place=feature.getProperty().getPlace();
         String[]array=place.split(" ");
         StringBuilder builder= new StringBuilder();
-        for(int i=3; i<array.length; i++){
-                builder.append(array[i]);
-                builder.append(" ");
+        for(int i=0; i<array.length; i++){
+            if(array[i].equalsIgnoreCase("of")){
+               int count=i+1;
+                for(int j=count; j<array.length; j++){
+                    builder.append(array[j]);
+                    builder.append(" ");
+                }
+            }
+
             }
         name.setText(builder.toString());
     }
